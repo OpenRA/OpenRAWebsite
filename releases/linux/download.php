@@ -19,8 +19,8 @@
 			<span class="links"><a href="/index.html">Home</a></span> 
 			<span class="links"><a href="/footage.html">Gameplay Footage</a></span> 
 			<span class="links"><a href="/mods.html">Mods</a></span> 
-			<span class="links"><a href="/stats.html">Stats</a></span>
 			<span class="links"><a href="/getinvolved.html">Get Involved</a></span>
+			<span class="links"><a href="http://www.sleipnirstuff.com/forum/viewforum.php?f=80">Forum</a></span>
 			<span class="links"><a href="irc://irc.freenode.net/openra">IRC</a></span>
 			<span class="links"><a href="http://twitter.com/openRA">Twitter</a></span>
 		</div>
