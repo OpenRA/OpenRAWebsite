@@ -24,8 +24,23 @@
 			<span class="links"><a href="irc://irc.freenode.net/openra">IRC</a></span>
 			<span class="links"><a href="http://twitter.com/openRA">Twitter</a></span>
 		</div>
-		<div>
-		    <?php
+		<div id="singlecolumn">
+			<h2>Downloading OpenRA for Linux</h2>
+			<p>
+				Thank you for downloading OpenRA for Linux. Please read the notes below and select the appropriate package for your distribution below.
+			</p>
+			<p>
+				If you are running Compiz/Desktop Effects, please disable it before attempting to run OpenRA. Compiz has known incompatibilities
+				with OpenGL applications.
+			</p>
+			<p>
+				When trying to report a crash to the developers, please include your exception.log file in your report. It can be found in ~/.openra/Logs
+			</p>
+			<p>
+				When running a server, make sure you have <a href="http://portforward.com/">forwarded the port</a> on your router that the server is running on.
+				The default port is 1234.
+			</p>
+			<?php
 		        function generateDownloadButton($target, $text, $desc)
 		        {
 		            echo "<div class=\"rounded download\" style=\"display: block; text-align: center; width: 320px\" onclick=\"document.location='".$target."'\">\n";

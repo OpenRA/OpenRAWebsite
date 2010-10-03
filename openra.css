@@ -86,6 +86,12 @@ div#sidebar a.desc
 	font-size: 0.7em
 }
 
+div#singlecolumn
+{
+	width: 70%;
+	margin: 0 auto;
+}
+
 div.download
 {
 	border: solid 3px #bd0000;
