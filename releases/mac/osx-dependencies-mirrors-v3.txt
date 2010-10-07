@@ -1,0 +1,3 @@
+http://open-ra.org/releases/mac/osx-deps-v3.zip
+http://openra.res0l.net/releases/mac/osx-deps-v3.zip
+http://www.sleipnirstuff.com/openra/osx-deps-v3.zip
