@@ -29,15 +29,18 @@
 				if (useragent.indexOf("x11") != -1 || useragent.indexOf("linux") != -1) {
 					$("#down_btn_linux").show();
 					$("#down_link_win").show();
+					$("#down_link_linux").hide();
 					$("#down_link_mac").show();
 				}
 				else if (useragent.indexOf("mac") != -1) {
 					$("#down_btn_mac").show();
 					$("#down_link_win").show();
 					$("#down_link_linux").show();
+					$("#down_link_mac").hide();
 				}
 				else {
 					$("#down_btn_win").show();
+					$("#down_link_win").hide();
 					$("#down_link_mac").show();
 					$("#down_link_linux").show();
 				}
