@@ -53,7 +53,7 @@
 					$("#stats_games").html(data);
 				});
 
-				$.get("/master/list.php", function(data) {
+				/*$.get("/master/list.php", function(data) {
 					if (data.length <= 3) { $("#stats_players").html("0"); return; }
 					var m, sum = 0;
 					var p = /^\s*Players: (\d+)/mg;
@@ -61,16 +61,10 @@
 						sum += (Number)(m[1]);
 					}
 					$("#stats_players").html(sum);
-				});
+				});*/
 				
 				$.getJSON("/releases/windows/version.json", function(data) {
 				    $("#down_btn_win span.desc").html(
-				        "version: " + data.version + " " +
-				        "size: " + data.size);
-				});
-				
-				$.getJSON("/releases/linux/version.json", function(data) {
-				    $("#down_btn_linux span.desc").html(
 				        "version: " + data.version + " " +
 				        "size: " + data.size);
 				});
@@ -100,9 +94,9 @@
 			</div>
 			<div id="sidebar">
 				<div style="margin: 0 auto; width: 100%">
-					<span class="stats">
+					<!--<span class="stats">
 						<strong id="stats_players">--</strong><span class="desc">current players</span>
-					</span>
+					</span>-->
 					<span class="stats">
 						<strong id="stats_games">--</strong><span class="desc">total games played</span>
 					</span>
