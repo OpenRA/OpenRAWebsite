@@ -38,12 +38,12 @@ class MotdHandler(webapp.RequestHandler):
 class ListHandler(webapp.RequestHandler):
     def get(self):
         self.response.headers["Content-Type"] = "text/plain"
-        n = 0
+        i = 0
         for gameinfo in Server.GetGames():
-            self.response.out.write('Game@%d:\n' % n)
+            self.response.out.write('Game@%d:\n' % i)
             for key in gameinfo.keys():
                 self.response.out.write('\t%s: %s\n' % (key, gameinfo[key]))
-            n += 1
+            i += 1
             
     
 class PingHandler(webapp.RequestHandler):

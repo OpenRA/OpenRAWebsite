@@ -75,6 +75,6 @@ class Game(db.Model):
     port = db.IntegerProperty()
     players = db.IntegerProperty()
     state = db.IntegerProperty()
-    lastPingTime = db.DateTimeProperty(auto_now_add=True)
+    lastPingTime = db.DateTimeProperty(auto_now=True)
     map = db.StringProperty()
     mods = db.StringProperty()
