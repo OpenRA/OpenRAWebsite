@@ -14,9 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import logging, urllib
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-import logging
+from google.appengine.api import urlfetch
+from google.appengine.api.labs import taskqueue
 from server import *
         
 class MotdHandler(webapp.RequestHandler):
@@ -56,36 +58,53 @@ class PingHandler(webapp.RequestHandler):
         try:
             ip = self.request.remote_addr
             if self.request.get('new'):
-                if not self.CheckPort(ip, self.request.get('port')):
-                    return
-                key = Server.NewGame(
+                Server.NewGame(
                                self.request.get('name'), 
-                               self.request.remote_addr, 
+                               ip, 
                                self.request.get('port'), 
                                self.request.get('players'), 
                                self.request.get('state'), 
                                self.request.get('map'), 
                                self.request.get('mods'))
+                # check port
+                taskqueue.add(url='/task/checkPort', params={'ip': ip, 'port': self.request.get('port')})
+            #elif self.request.get('die'):
             else:
-                key = Server.UpdateGame(
+                Server.UpdateGame(
                                self.request.get('name'), 
-                               self.request.remote_addr, 
+                               ip, 
                                self.request.get('port'), 
                                self.request.get('players'), 
                                self.request.get('state'), 
                                self.request.get('map'), 
                                self.request.get('mods'))
-        except Exception, ex:
-            logging.error(ex)
-        
-    def CheckPort(self, ip, port):
-        return True
-        
+        except Exception, exception:
+            logging.exception(exception)
+
+
+class TaskCheckPort(webapp.RequestHandler):
+    REMOTE_PING_SERVICE_URL = "http://localhost/service/ping.php" #TODO: set me
+    def post(self):
+        try:
+            requestData = urllib.urlencode({
+                    'ip': self.request.get('ip'),
+                    'port': self.request.get('port'),
+                    })
+            result = urlfetch.fetch(url=self.REMOTE_PING_SERVICE_URL,
+                        payload=requestData,
+                        method=urlfetch.POST,
+                        headers={'Content-Type': 'application/x-www-form-urlencoded'})
+            if result.status_code == 200:
+                if result.content is not True: #TODO: set value for a valid response
+                    Server.EndGame(self.request.get('ip'), self.request.get('port'))
+        except Exception, exception:
+            logging.exception(exception)
 
 def main():
     application = webapp.WSGIApplication([('/list', ListHandler),
                                           ('/motd', MotdHandler),
-                                          ('/ping', PingHandler)
+                                          ('/ping', PingHandler),
+                                          ('/task/checkPort', TaskCheckPort),
                                           ],
                                          debug=True)
     util.run_wsgi_app(application)
