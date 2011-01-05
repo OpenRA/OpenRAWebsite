@@ -50,23 +50,41 @@
 		            echo "</div>";
 		        }
 		        
-		        $archTarget = file_get_contents("archlatest.txt");
+		        $archTarget = file_get_contents("archlatest32.txt");
 		        list($version,$size,$target) = explode(",", $archTarget);
 		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
 		        
 		        generateDownloadButton(trim($target), "Download for Arch Linux", $desc);
+
+		        $archTarget = file_get_contents("archlatest.txt");
+		        list($version,$size,$target) = explode(",", $archTarget);
+		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
 		        
-		        $rpmTarget = file_get_contents("rpmlatest.txt");
+		        generateDownloadButton(trim($target), "Download for Arch Linux (64bit)", $desc);
+
+		        $rpmTarget = file_get_contents("rpmlatest32.txt");
 		        list($version,$size,$target) = explode(",", $rpmTarget);
 		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
 		        
 		        generateDownloadButton(trim($target), "Download for RPM based systems", $desc);
 		        
-		        $debTarget = file_get_contents("deblatest.txt");
+		        $rpmTarget = file_get_contents("rpmlatest.txt");
+		        list($version,$size,$target) = explode(",", $rpmTarget);
+		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
+		        
+		        generateDownloadButton(trim($target), "Download for RPM based systems (64bit)", $desc);
+
+		        $debTarget = file_get_contents("deblatest32.txt");
 		        list($version,$size,$target) = explode(",", $debTarget);
 		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
 		        
 		        generateDownloadButton(trim($target), "Download for deb based systems", $desc);
+		        
+		        $debTarget = file_get_contents("deblatest.txt");
+		        list($version,$size,$target) = explode(",", $debTarget);
+		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
+		        
+		        generateDownloadButton(trim($target), "Download for deb based systems (64bit)", $desc);
 		        
 		        $version = file_get_contents("srclatest.txt");
 		        $target = "http://github.com/chrisforbes/OpenRA/tarball/playtest-".trim($version);
