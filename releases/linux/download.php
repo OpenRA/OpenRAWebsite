@@ -56,11 +56,11 @@
 		        
 		        generateDownloadButton(trim($target), "Download for Arch Linux", $desc);
 
-		        $archTarget = file_get_contents("archlatest.txt");
-		        list($version,$size,$target) = explode(",", $archTarget);
-		        $desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
+		        //$archTarget = file_get_contents("archlatest.txt");
+		        //list($version,$size,$target) = explode(",", $archTarget);
+		        //$desc = sprintf("version: %s size: %.2fMB", $version, $size/1048576);
 		        
-		        generateDownloadButton(trim($target), "Download for Arch Linux (64bit)", $desc);
+		        //generateDownloadButton(trim($target), "Download for Arch Linux (64bit)", $desc);
 
 		        $rpmTarget = file_get_contents("rpmlatest32.txt");
 		        list($version,$size,$target) = explode(",", $rpmTarget);
