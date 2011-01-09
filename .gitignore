@@ -3,4 +3,8 @@ statistics
 tmp
 packages
 playtests
+master/VERSION
+master/openra.db
+games.txt
+downloads.txt
 
