@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 header('Content-Type: application/javascript');
+=======
+header('Content-Type: text/plain');
+>>>>>>> 19de5e8855ab482c053c5f83fce02108b200c63e
 
     try
     {
